@@ -31,7 +31,7 @@ const ResizableMyVersion = () => {
 				{/* It's OKAY if we toggle to fast and there is exit animation*/}
 				{/* as long AnimarePresence in short circuit like bellow (not TERNARY)*/}
 				{/* ======================================================================= */}
-				<AnimatePresence mode="popLayout">
+				{/* <AnimatePresence mode="popLayout">
 					{isOpen && (
 						<motion.div
 							layout
@@ -51,35 +51,41 @@ const ResizableMyVersion = () => {
 							<p>Lorem ipsum dolor sit amet consectetur.</p>
 						</motion.div>
 					)}
-				</AnimatePresence>
+				</AnimatePresence> */}
 				{/* ======================================================================= */}
 				{/* animatepresence MODE "poplayout" is the best for animating with layout */}
 				{/* if we toggle to fast and there is exit animation, it make a BUG*/}
 				{/* Dont use exit animation in AnimarePresence TERNARY like bellow*/}
 				{/* ======================================================================= */}
-				{/* <AnimatePresence mode="popLayout" initial={false}>
+				<AnimatePresence mode="popLayout" initial={false}>
 					<motion.p
 						key={isOpen}
+						// without AnimatePresence
+						// initial={false}
+						// animate={{
+						// 	opacity: [0, 1],
+						// 	transition: { delay: 0.1 },
+						// }}
 						initial={{
 							opacity: 0,
 						}}
 						animate={{
 							opacity: 1,
-							transition: { delay: 0.2 },
+							transition: { delay: 0.1 },
 						}}
 						// exit make BUG with double children if we toggle to fast
 						// exit={{ x: -150, opacity: 0 }}
-						// transition={{ duration: 1 }}
+						// transition={{ duration: 0.5 }}
 						// layout="size"
 						// layout="position"
 						layout
-						className="mt-4 space-y-3"
+						className="mt-4 space-y-3 "
 					>
 						{isOpen
 							? "Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. "
 							: "	Something Stupid like i love you"}
 					</motion.p>
-				</AnimatePresence> */}
+				</AnimatePresence>
 				{/* ===================================================================== */}
 			</motion.div>
 		</div>
