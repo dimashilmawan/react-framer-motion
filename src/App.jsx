@@ -4,9 +4,10 @@ import Parallax from "./components/Parallax";
 import Resizable from "./components/Resizable";
 import ResizableMyVersion from "./components/ResizableMyVersion";
 import Slider from "./components/Slider";
+import SpotLight from "./components/SpotLight";
 import Todos from "./components/Todos";
 
 const App = () => {
-	return <CheckList />;
+	return <SpotLight />;
 };
 export default App;
