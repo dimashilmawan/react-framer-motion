@@ -18,7 +18,7 @@ const AppIcon = ({ mouseX }) => {
 		return val - boundsX - boundsWidth / 2;
 	});
 
-	const widthSync = useTransform(distance, [-150, 0, 150], [40, 80, 40]);
+	const widthSync = useTransform(distance, [-150, 0, 150], [40, 70, 40]);
 	const width = useSpring(widthSync, {
 		mass: 0.5,
 		stiffness: 150,
@@ -30,7 +30,7 @@ const AppIcon = ({ mouseX }) => {
 		<motion.div
 			ref={ref}
 			style={{ width }}
-			className="aspect-square w-12 rounded-full bg-indigo-400"
+			className="aspect-square w-12 cursor-pointer rounded-full bg-yellow-400/90"
 		/>
 	);
 };
@@ -41,7 +41,7 @@ const Dock = () => {
 		<motion.div
 			onMouseMove={e => mouseX.set(e.pageX)}
 			onMouseLeave={() => mouseX.set(Infinity)}
-			className="mx-auto flex h-16 items-end gap-4 rounded-lg bg-gray-300 p-4 pb-3"
+			className="mx-auto flex h-16 items-end gap-4 rounded-lg bg-slate-900 p-4 pb-3"
 		>
 			{[...Array(8).keys()].map(i => (
 				<AppIcon mouseX={mouseX} key={i} />
@@ -52,7 +52,7 @@ const Dock = () => {
 
 const MacOSDock = () => {
 	return (
-		<div className="flex h-screen w-full flex-col justify-end bg-gray-100 pb-24">
+		<div className="flex h-screen w-full flex-col justify-end bg-slate-950 pb-24">
 			<Dock />
 		</div>
 	);
