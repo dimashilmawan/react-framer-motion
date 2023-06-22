@@ -34,7 +34,7 @@ const Explore = () => {
 	const [active, setActive] = useState("world-3");
 	return (
 		<div className="">
-			<section className="flex h-screen w-full flex-col justify-center bg-gradient-to-r from-green-700/90 to-emerald-800/80">
+			<section className="flex h-screen w-full flex-col justify-center bg-gradient-to-r from-emerald-900/90 to-green-900/80">
 				<h1 className="flex items-center justify-center gap-3 text-center text-5xl font-semibold text-gray-100">
 					<span className="-mt-[6px]">Scroll Down</span>
 					<motion.span
@@ -49,7 +49,7 @@ const Explore = () => {
 					</motion.span>
 				</h1>
 			</section>
-			<section className="h-screen bg-gradient-to-r from-emerald-500 to-green-500 pt-36">
+			<section className="h-screen bg-gradient-to-r from-emerald-950/90 to-gray-950/80 pt-36">
 				<motion.div
 					initial="hidden"
 					whileInView="show"
@@ -59,7 +59,7 @@ const Explore = () => {
 				>
 					{exploreWorlds.map((explore, i) => (
 						<motion.div
-							className={`cursor-pointer overflow-hidden rounded-xl transition-[flex] duration-300`}
+							className={`relative cursor-pointer overflow-hidden rounded-xl transition-[flex] duration-300`}
 							variants={{
 								hidden: {
 									scaleX: 0,
@@ -80,6 +80,17 @@ const Explore = () => {
 								className="h-full w-full object-cover"
 								alt=""
 							/>
+							<motion.div
+								animate={{
+									opacity: active === explore.id ? 1 : 0,
+									y: active === explore.id ? 0 : 200,
+								}}
+								className="absolute -bottom-24 left-0 h-1/2 w-full bg-gray-950/50 p-6 backdrop-blur-sm"
+							>
+								<h3 className="text-center text-3xl font-semibold text-gray-200">
+									{explore.title}
+								</h3>
+							</motion.div>
 						</motion.div>
 					))}
 				</motion.div>
