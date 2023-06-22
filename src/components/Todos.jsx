@@ -2,8 +2,32 @@ import { AnimatePresence, motion, MotionConfig } from "framer-motion";
 import { useState } from "react";
 import useMeasure from "react-use-measure";
 import { v4 as uuid } from "uuid";
+
+const DUMMY_TODOS = [
+	{
+		id: "a1",
+		value: "Do homework",
+	},
+	{
+		id: "a2",
+		value: "Exercise",
+	},
+	{
+		id: "a3",
+		value: "Buy food",
+	},
+	{
+		id: "a4",
+		value: "Coding",
+	},
+	{
+		id: "a5",
+		value: "Read Novel",
+	},
+];
+
 const Todos = () => {
-	const [todos, setTodos] = useState([]);
+	const [todos, setTodos] = useState(DUMMY_TODOS);
 	const [input, setInput] = useState("");
 
 	const [ref, { height }] = useMeasure();
@@ -59,7 +83,7 @@ const Todos = () => {
 									key={todo.id}
 									layout
 									initial={{
-										y: -25,
+										y: -50,
 										scale: 0.1,
 										opacity: 0,
 									}}
@@ -69,11 +93,15 @@ const Todos = () => {
 										opacity: 1,
 									}}
 									exit={{
-										y: -25,
+										y: -50,
 										scale: 0.1,
 										opacity: 0,
 									}}
-									transition={{ type: "spring" }}
+									transition={{
+										duration: 0.3,
+										type: "tween",
+										layout: { duration: 0.4 },
+									}}
 									onClick={() => removeTodoHandler(todo.id)}
 									className="flex items-center gap-3 rounded-lg bg-sky-500 p-3 font-semibold text-gray-200"
 								>
